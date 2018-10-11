@@ -1,9 +1,9 @@
 package scalajsreact.template.pages
 
-import scalacss.ScalaCssReact._
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.html_<^._
-import scalajsreact.template.components.Firebase.{FirebaseComponent, StyledFirebaseAuth}
+import scalacss.ScalaCssReact._
+import scalajsreact.template.components.Firebase.FirebaseComponent
 
 // TODO page background to have image
 // and boots trapo css wirth Material UI design for both browser and

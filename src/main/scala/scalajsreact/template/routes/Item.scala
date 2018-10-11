@@ -1,9 +1,9 @@
 package scalajsreact.template.routes
 
-import scalajsreact.template.components.items.{CallbackTest, Item1Data, Item2Data, ItemsInfo, CameraTest/*,Login*/}
-import scalajsreact.template.pages.ItemsPage
 import japgolly.scalajs.react.extra.router.RouterConfigDsl
 import japgolly.scalajs.react.vdom.VdomElement
+import scalajsreact.template.components.items._
+import scalajsreact.template.pages.ItemsPage
 
 sealed abstract class Item(val title: String,
                            val routerPath: String,

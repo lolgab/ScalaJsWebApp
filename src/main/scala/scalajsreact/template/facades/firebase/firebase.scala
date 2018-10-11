@@ -2,7 +2,6 @@ package scalajsreact.template.facades.firebase
 
 import scalajsreact.template.facades.firebase.firebase.auth.UserCredential
 
-import scala.annotation.meta.field
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 import scala.scalajs.js.|
@@ -97,10 +96,10 @@ object firebase extends js.Object {
 
     @js.native
     trait UserCredential extends js.Object {
-      val user: User | Null                        = js.native
-      val credential: AuthCredential | Null        = js.native
-      val operationType: js.UndefOr[String | Null] = js.native
-      val additionalUserInfo: js.UndefOr[AdditionalUserInfo | Null]
+      val user: User | Null                                         = js.native
+      val credential: AuthCredential | Null                         = js.native
+      val operationType: js.UndefOr[String | Null]                  = js.native
+      val additionalUserInfo: js.UndefOr[AdditionalUserInfo | Null] = js.native
     }
 
     @js.native

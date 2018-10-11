@@ -1,15 +1,12 @@
 package scalajsreact.template.components.items
 
 
-import google.maps.Data.Feature
 import google.maps.LatLng
 import japgolly.scalajs.react.ScalaComponent
 import japgolly.scalajs.react.vdom.html_<^._
 import org.scalajs.dom._
 
 import scala.scalajs.js
-import js.annotation.JSExport
-import org.scalajs.dom
 
 
 object ordertracking {

@@ -1,8 +1,8 @@
 package scalajsreact.template.css
 
-import scala.language.postfixOps
 import scalacss.Defaults._
-import scalajsreact.template.components.TopNav.Style.{&, style}
+
+import scala.language.postfixOps
 
 object GlobalStyle extends StyleSheet.Inline {
 
