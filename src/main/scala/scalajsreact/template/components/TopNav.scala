@@ -8,10 +8,7 @@ import japgolly.scalajs.react._
 import japgolly.scalajs.react.extra.Reusability
 import japgolly.scalajs.react.extra.router.RouterCtl
 import japgolly.scalajs.react.vdom.html_<^._
-import scalacss.internal.LengthUnit.px
 import scalajsreact.template.css.GlobalStyle
-import scala.scalajs.js
-//import scalatags.JsDom.all._
 
 
 object TopNav {
@@ -23,8 +20,8 @@ object TopNav {
     val navMenu = style(display.flex,
                         alignItems.center,
                         backgroundColor(c"#F2706D"),
-                        margin(0 px , auto ),
-                        padding(15 px , 15 px),
+                        margin(0.px , auto ),
+                        padding(15.px , 15.px),
                         flexWrap.wrap,
                         justifyContent.spaceBetween,
                         listStyle := "none")
