@@ -3,7 +3,6 @@ package scalajsreact.template.pages
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.html_<^._
 import scalacss.ScalaCssReact._
-import scalajsreact.template.components.Firebase.FirebaseComponent
 
 // TODO page background to have image
 // and boots trapo css wirth Material UI design for both browser and
@@ -24,8 +23,7 @@ object HomePage {
         <.div(Style.content,
               "React based app store ",
               <.p("convert this page to listing"),
-              <.p("using Material UI and with bootstrap css"),
-        FirebaseComponent.firebaseComponent
+              <.p("using Material UI and with bootstrap css")
         ))
       .build
 

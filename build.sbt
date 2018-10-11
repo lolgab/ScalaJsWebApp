@@ -30,6 +30,7 @@ libraryDependencies ++= Seq(
 
 version in webpack := "4.20.2"
 version in startWebpackDevServer := "3.1.9"
+
 scalaJSUseMainModuleInitializer := true
 
 npmDependencies in Compile ++= Seq(

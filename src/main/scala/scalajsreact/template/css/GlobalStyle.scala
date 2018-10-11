@@ -1,6 +1,6 @@
 package scalajsreact.template.css
 
-import scalacss.Defaults._
+import scalajsreact.template.ReactApp.CssSettings._
 
 import scala.language.postfixOps
 
@@ -18,73 +18,30 @@ object GlobalStyle extends StyleSheet.Inline {
   )
   val toggle = style(
     display.none,
-
+    fontSize(50.px),
+    cursor.pointer,
     unsafeChild("a")(
       textDecoration:=none,
-      color.white,
+      color.black,
       display.block,
-      fontSize(25.px)
+      fontSize(50.px)
 
     ),
-    media.maxWidth(767.px)(
+    media.maxWidth(2000.px)(
       alignItems.center,
       display.flex
     )
   )
-/*
-https://codepen.io/AleGonzalez/pen/YWxXaj
- */
 
-  /*
-  .logo{
-  display: flex;
-  img{
-    width: 50px;
-    height: 50px;
-  }
-}
-   */
   val logo = style(
     display.flex,
     backgroundColor.black,
     unsafeChild("img")(
-      width(50.px),
-      height(50.px)
+      width(60.px),
+      height(60.px)
     )
   )
 
-  /*
-  ul{
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  @media (max-width: 767px){
-    align-items: center;
-    position: absolute;
-    flex-direction: column;
-    top: 0;
-    left: -250px;
-    transition: 0.3s;
-    background-color: #7f8c8d;
-    width: 250px;
-    height: 100%;
-
-  }
-}
-ul li{
-   margin: 0 10px;
-  color: #fff;
-  font-family: verdana;
-  @media (max-width: 767px){
-    margin: 15px 10px;
-  }
-  a{
-    text-decoration: none;
-    color: #fff;
-  }
-}
-   */
 
 
   val ul = style(
@@ -98,14 +55,15 @@ ul li{
     color(c"rgb(244, 233, 233)"),
     //backgroundColor(c"#E8433F"),
 
-    media.maxWidth(767.px)(
+    media.maxWidth(2000.px)(
       alignItems.center,
       //position.absolute,
       flexDirection.column,
       position.absolute,
-      top(75.px),
+      top(105.px),
       left(0.px),
-      transition:=  "0.3 seconds",
+     // transition:=  "0.3 seconds",
+      transition:= "left 0.2s",
       backgroundColor(Color("#F2706D")),
       //width(87.px),
       height(100.%%),
@@ -119,16 +77,15 @@ ul li{
       backgroundColor(Color("#0C0101")),
       alignItems.center,
       justifyContent.spaceBetween,
-      media.maxWidth(767.px)(
+      media.maxWidth(2000.px)(
         margin(15 px , 10 px)
       ) ,
       unsafeChild("a")(
         textDecoration:= none,
-        color:= "#E8433F"
+        color(c"#E8433F")
       )
     )
   )
-
 
 
 

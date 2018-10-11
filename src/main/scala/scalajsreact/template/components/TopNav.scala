@@ -4,14 +4,18 @@ import japgolly.scalajs.react._
 import japgolly.scalajs.react.extra.Reusability
 import japgolly.scalajs.react.extra.router.RouterCtl
 import japgolly.scalajs.react.vdom.html_<^._
-import scalacss.Defaults._
+import org.scalajs.dom
+import scalajsreact.template.ReactApp.CssSettings._
 import scalacss.ScalaCssReact._
 import scalajsreact.template.css.GlobalStyle
 import scalajsreact.template.models.Menu
 import scalajsreact.template.routes.AppRouter.AppPage
 
+import scala.language.postfixOps
 
 object TopNav {
+
+
 
   object Style extends StyleSheet.Inline {
 
@@ -37,24 +41,14 @@ object TopNav {
       )
     }
 
-
-    /* toggle
-     .toggle{
-      display: none;
-      a{
-        text-decoration: none;
-        color: white;
-        display: block;
-        font-size: 25px;
-      }
-      @media (max-width: 767px){
-        align-items: center;
-        display: flex;
-      }
-    }
-
-    */
-
+    val fa_home = style(
+      color.black,
+      fontSize(50.px),
+      cursor.pointer,
+      //backgroundColor.black,
+      padding(15.px),
+      fontFamily:="fontAwesome"
+    )
 
 
 
@@ -67,7 +61,7 @@ object TopNav {
   implicit val currentPageReuse = Reusability.by_==[AppPage]
   implicit val propsReuse = Reusability.by((_: Props).selectedPage)
 
-  /* old code
+/* old code
   val component = ScalaComponent
     .builder[Props]("TopNav")
     .render_P { P =>
@@ -89,33 +83,62 @@ object TopNav {
     }
     .configure(Reusability.shouldComponentUpdate)
     .build
-
 */
+
+  case class State(displaySidePanel: String)
+
+  case class Backend($: BackendScope[Props, State]) {
+
+
+    def TogleSidePanel(e:ReactEvent)={
+      println("horizontal bar are clicked")
+      println(e)
+      dom.console.log("toggle state for nav bar, !use this for js facade printing")
+      Callback.log("horizontal bar are clicked")
+      //togle side panel
+      $.modState(State => {
+        if (State.displaySidePanel == "0px"){
+          State.copy("-150px")
+        }
+        else{
+          State.copy("0px")
+        }
+      })
+    }
+
+
+    def render(P: Props,S:State) = {
+      // I can access P and event S here directly
+     // val myVar = P.nameOfProperty + 10
+      <.header()(
+        <.nav(Style.navMenu)(
+          <.div(GlobalStyle.logo)(
+            <.img(^.src:=  "https://res.cloudinary.com/dq5pqcbnq/image/upload/v1538389452/logo.png",^.width:=50.px,^.height:=50.px )
+          ),<.a(^.href:="#", ^.cls:= "btn-toggle" ,^.textDecoration.none )(<.span(^.cls := "fa-home" , Style.fa_home)),
+          <.div(GlobalStyle.toggle, ^.onClick ==>TogleSidePanel)("☰")
+          ,<.ul(GlobalStyle.ul,^.left:=S.displaySidePanel,
+            P.menus.toTagMod { item =>
+              <.li(
+                ^.key := item.name,
+                Style.menuItem(item.route.getClass == P.selectedPage.getClass),
+                item.name,
+                P.ctrl setOnClick item.route
+              )
+            })
+        )
+      )
+    }
+  }
+
+
+
+
 
   val component = ScalaComponent
     .builder[Props]("TopNav")
-    .render_P { P =>
-      <.header()(
-          <.nav(Style.navMenu)(
-              <.div(GlobalStyle.logo)(
-                <.img(^.src:=  "https://res.cloudinary.com/dq5pqcbnq/image/upload/v1538389452/logo.png",^.width:=50.px,^.height:=50.px )
-              ),
-              <.div(GlobalStyle.toggle)(
-                <.a(^.href:="#", ^.cls:= "btn-toggle")("☰")
-              )
-              ,<.ul(GlobalStyle.ul,
-                P.menus.toTagMod { item =>
-                  <.li(
-                    ^.key := item.name,
-                    Style.menuItem(item.route.getClass == P.selectedPage.getClass),
-                    item.name,
-                    P.ctrl setOnClick item.route
-                  )
-                })
-            )
-      )
-    }
-    .configure(Reusability.shouldComponentUpdate)
+    .initialState(State("0px"))
+    //.configure(Reusability.shouldComponentUpdate)
+    .renderBackend[Backend]
     .build
   
 

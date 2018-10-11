@@ -1,6 +1,6 @@
 package scalajsreact.template.css
 
-import scalacss.Defaults._
+import scalajsreact.template.ReactApp.CssSettings._
 import scalacss.internal.mutable.GlobalRegistry
 import scalajsreact.template.components.{LeftNav, TopNav}
 import scalajsreact.template.pages.{HomePage, ItemsPage}

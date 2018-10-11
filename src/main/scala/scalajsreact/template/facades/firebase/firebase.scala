@@ -1,7 +1,5 @@
 package scalajsreact.template.facades.firebase
 
-import scalajsreact.template.facades.firebase.firebase.auth.UserCredential
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 import scala.scalajs.js.|
@@ -34,9 +32,9 @@ object firebase extends js.Object {
     def isAnonymous: Boolean = js.native
 
     def linkAndRetrieveDataWithCredential(
-        credential: auth.AuthCredential): js.Promise[UserCredential] = js.native
+        credential: auth.AuthCredential): js.Promise[auth.UserCredential] = js.native
 
-    def linkWithPopup(provider: auth.AuthProvider): js.Promise[UserCredential] = js.native
+    def linkWithPopup(provider: auth.AuthProvider): js.Promise[auth.UserCredential] = js.native
 
     def linkWithRedirect(provider: auth.AuthProvider): js.Promise[Unit] = js.native
 
@@ -49,22 +47,27 @@ object firebase extends js.Object {
     def sendEmailVerification(
         actionCodeSettings: js.UndefOr[auth.ActionCodeSettings]): js.Promise[Unit] = js.native
 
-    def unlink(providerId: String): js.Promise[js.Any] = js.native
+    def unlink(providerId: String): js.Promise[User] = js.native
 
-    def updateEmail(newEmail: String): js.Promise[js.Any] = js.native
+    def updateEmail(newEmail: String): js.Promise[Unit] = js.native
 
-    def updatePassword(newPassword: String): js.Promise[js.Any] = js.native
+    def updatePassword(newPassword: String): js.Promise[Unit] = js.native
 
-    def updateProfile(profile: js.Any): js.Promise[js.Any] = js.native
+    def updatePhoneNumber(phoneCredential: auth.AuthCredential): js.Promise[Unit] = js.native
+
+    def updateProfile(profile: js.Object {
+      val displayName: String
+      val photoURL: String
+    }): js.Promise[Unit] = js.native
   }
 
   @js.native
   trait UserInfo extends js.Object {
-    var displayName: String | Null = js.native
-    var email: String | Null       = js.native
-    var photoURL: String | Null    = js.native
-    var providerId: String         = js.native
-    var uid: String                = js.native
+    val displayName: String | Null = js.native
+    val email: String | Null       = js.native
+    val photoURL: String | Null    = js.native
+    val providerId: String         = js.native
+    val uid: String                = js.native
   }
 
   @js.native
@@ -114,7 +117,7 @@ object firebase extends js.Object {
 
     @js.native
     object EmailAuthProvider extends js.Object {
-      var PROVIDER_ID: String = js.native
+      val PROVIDER_ID: String = js.native
 
       def credential(email: String, password: String): AuthCredential = js.native
     }
@@ -127,21 +130,21 @@ object firebase extends js.Object {
 
     @js.native
     object FacebookAuthProvider extends js.Object {
-      var PROVIDER_ID: String = js.native
+      val PROVIDER_ID: String = js.native
 
       def credential(token: String): AuthCredential = js.native
     }
 
     @js.native
     object GithubAuthProvider extends js.Object {
-      var PROVIDER_ID: String = js.native
+      val PROVIDER_ID: String = js.native
 
       def credential(token: String): AuthCredential = js.native
     }
 
     @js.native
     object GoogleAuthProvider extends js.Object {
-      var PROVIDER_ID: String = js.native
+      val PROVIDER_ID: String = js.native
 
       def credential(idToken: String | Null = ???,
                      accessToken: String | Null = ???): AuthCredential =
@@ -150,11 +153,10 @@ object firebase extends js.Object {
 
     @js.native
     object TwitterAuthProvider extends js.Object {
-      var PROVIDER_ID: String = js.native
+      val PROVIDER_ID: String = js.native
 
       def credential(token: String, secret: String): AuthCredential = js.native
     }
-
   }
 }
 

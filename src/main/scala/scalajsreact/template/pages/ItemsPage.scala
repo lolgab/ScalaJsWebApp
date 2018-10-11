@@ -3,7 +3,7 @@ package scalajsreact.template.pages
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.extra.router.RouterCtl
 import japgolly.scalajs.react.vdom.html_<^._
-import scalacss.Defaults._
+import scalajsreact.template.ReactApp.CssSettings._
 import scalacss.ScalaCssReact._
 import scalajsreact.template.components.LeftNav
 import scalajsreact.template.routes.Item
